@@ -25,7 +25,7 @@ if ($img) { ?>
             L'image portant le nom <strong><?= $img->name ?></strong> a bien été supprimée !
         </div>
 
-        <a href="/index.php">Aller à l'historique</a>
+        <a href="/historique.php">Aller à l'historique</a>
     </div>
 
 <?php
@@ -36,7 +36,7 @@ if ($img) { ?>
             Une erreur est survenue, merci de vérifier si cette image existe toujours.
         </div>
 
-        <a href="/index.php">Aller à l'historique</a>
+        <a href="/historique.php">Aller à l'historique</a>
     </div>
 
 <?php
