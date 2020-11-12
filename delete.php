@@ -16,6 +16,7 @@ if ($token !== null) {
         $dropResult = $collection->deleteOne([
             'url' => $token
         ]);
+        unlink('./uploads/' . $token . '.' . $img->extension);
     }
 }
 
