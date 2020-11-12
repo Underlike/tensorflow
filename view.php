@@ -23,6 +23,8 @@ if ($img) { ?>
                 <p class="card-text"><strong>Nom de l'image</strong> : <a href="./assets/uploads/<?= $img->url ?>.<?= $img->extension ?>"><?= $img->name ?></a></p>
                 <p class="card-text"><strong>Taille de l'image</strong> : <?= $img->size ?> octets</p>
                 <p class="card-text"><small class="text-muted">Ajoutée le <?= $img->date ?></small></p>
+                <hr/>
+                <a href="#" class="btn btn-primary">Analyser</a>
             </div>
         </div>
     </div>
