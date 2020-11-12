@@ -17,10 +17,12 @@ if ($token !== null) {
 if ($img) { ?>
     <div class="container mt-4">
         <div class="card">
+            <img src="./assets/uploads/<?= $img->url ?>.<?= $img->extension ?>" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Détails de l'image <strong><?= $img->name ?></strong></h5>
-                <p class="card-text">This is another card with title and supporting text below. This card has some additional content to make it slightly taller overall.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <h4 class="card-title">Détails de l'image</h5>
+                <p class="card-text"><strong>Nom de l'image</strong> : <a href="./assets/uploads/<?= $img->url ?>.<?= $img->extension ?>"><?= $img->name ?></a></p>
+                <p class="card-text"><strong>Taille de l'image</strong> : <?= $img->size ?> octets</p>
+                <p class="card-text"><small class="text-muted">Ajoutée le <?= $img->date ?></small></p>
             </div>
         </div>
     </div>
