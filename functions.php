@@ -22,22 +22,22 @@ if (isset($_POST) && count($_FILES) > 0)
 
         if (in_array($image['type'], $availableTypes)) {
 
+            $extension = 'png';
+
+            if ($image['type'] == 'image/jpeg') {
+                $extension = 'jpg';
+            }
+
             $data = [
                 'url' => $token,
                 'name' => $image['name'],
                 'size' => $image['size'],
-                'date' => date("d-m-Y")
+                'date' => date("d-m-Y"),
+                'extension' => $extension
             ];
 
             getConnection()->insertOne($data);
 
-            $extension = 'png';
-
-            if ($image['type'] == 'image/jpeg') {
-
-                $extension = 'jpg';
-
-            }
 
             move_uploaded_file($image['tmp_name'], './assets/uploads/' . $token . '.' . $extension);
 

@@ -19,8 +19,9 @@ $i = 0;
     <div class="row">
         <?php foreach ($uploads as $upload) { ?>
             <div class="card mb-3 col-lg-3 mx-2" style="width: 18rem;">
-                <img src="./uploads/<?= $upload->url ?>.<?= $upload->extension ?>" class="card-img-top" style="max-width: 500; max-height: 500px" alt="<?= $upload->name ?>">
+                <img src="./assets/uploads/<?= $upload->url ?>.<?= $upload->extension ?>" class="card-img-top" style="max-width: 500; max-height: 500px" alt="<?= $upload->name ?>">
                 <div class="card-body">
+                    <a href="/view.php?id=<?= $upload->url ?>" class="btn btn-primary">Détails</a>
                     <a href="/delete.php?id=<?= $upload->url ?>" class="btn btn-primary">Supprimer</a>
                 </div>
             </div>
