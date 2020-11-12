@@ -18,15 +18,6 @@ if (isset($_POST) && count($_FILES) > 0) {
 
         if (in_array($image['type'], $availableTypes)) {
 
-            $data = [
-                'url' => $token,
-                'name' => $image['name'],
-                'size' => $image['size'],
-                'date' => time()
-            ];
-
-            $collection->insertOne($data);
-
             $extension = 'png';
 
             if ($image['type'] == 'image/jpeg') {
@@ -34,6 +25,16 @@ if (isset($_POST) && count($_FILES) > 0) {
                 $extension = 'jpg';
 
             }
+            $data = [
+                'url' => $token,
+                'name' => $image['name'],
+                'size' => $image['size'],
+                'date' => time(),
+                'extension' => $extension
+            ];
+
+            $collection->insertOne($data);
+
 
             move_uploaded_file($image['tmp_name'], './uploads/' . $token . '.' . $extension);
 
