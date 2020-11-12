@@ -13,7 +13,7 @@ if ($token !== null) {
         'url' => $token
     ]);
     if ($img) {
-        $dropResult = $collection->drop([
+        $dropResult = $collection->deleteOne([
             'url' => $token
         ]);
     }
