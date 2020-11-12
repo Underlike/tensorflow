@@ -4,4 +4,4 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$collection = (new MongoDB\Client)->tensorflow->uploads;
+$collection = (new MongoDB\Client)->tensorflow->tensorflow;
