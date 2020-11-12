@@ -20,7 +20,7 @@
 
         <div class="container mt-4">
             <div class="card">
-                <div class="card-header">Analyser une image</div>
+                <div class="card-header"><b>Analyser une image</b></div>
                 <div class="card-body">
                 <?php 
                 if(empty($_GET['urlImage'])) { ?>
@@ -49,6 +49,11 @@
                     </form>
                 <?php } ?>
                 </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-header"><b>Liste MongoDB des images</b></div>
+                <div class="card-body"></div>
             </div>
         </div>
         
