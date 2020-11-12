@@ -17,14 +17,14 @@ if ($token !== null) {
 if ($img) { ?>
     <div class="container mt-4">
         <div class="card">
-            <img src="./assets/uploads/<?= $img->url ?>.<?= $img->extension ?>" class="card-img-top" alt="...">
+            <img src="./assets/uploads/<?= $img->url ?>.<?= $img->extension ?>" class="card-img-top" id="img-preview" alt="...">
             <div class="card-body">
                 <h4 class="card-title">Détails de l'image</h5>
                 <p class="card-text"><strong>Nom de l'image</strong> : <a href="./assets/uploads/<?= $img->url ?>.<?= $img->extension ?>"><?= $img->name ?></a></p>
                 <p class="card-text"><strong>Taille de l'image</strong> : <?= $img->size ?> octets</p>
                 <p class="card-text"><small class="text-muted">Ajoutée le <?= $img->date ?></small></p>
                 <hr/>
-                <a href="#" class="btn btn-primary">Analyser</a>
+                <a id="btn-analyse" href="#" class="btn btn-primary">Analyser</a>
             </div>
         </div>
     </div>
@@ -43,4 +43,4 @@ if ($img) { ?>
 <?php
 
 }
-include('includes/header.php');
+include('includes/footer.php');
