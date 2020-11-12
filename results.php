@@ -1,52 +1,40 @@
 <?php
 
 require './vendor/autoload.php';
-include('includes/dbconnect.php');
-include('includes/header.php');
+include('./includes/helpers.php');
 
-$token = $_GET['id'] ?? null;
 
-$img = null;
-$dropResult = null;
-if ($token !== null) {
-    $img = $collection->findOne([
+$connection = getConnection();
+if (!empty($_POST)) {
+    $token = $_POST['id'] ?? null;
+    $class = $_POST['class'] ?? null;
+    $score = $_POST['score'] ?? null;
+    if (isset($token, $score, $class)) {
+        $connection->updateOne(array("url" => $token), ['$set' => [
+            'class' => $class,
+            'score' => $score
+        ]]);
+    }
+} else {
+    $token = $_GET['id'] ?? null;
+
+    $img = $connection->findOne([
         'url' => $token
     ]);
-}
 
-if ($img) { ?>
-    <div class="container mt-4">
-        <div class="card">
-            <input hidden id="img-token" value="<?= $img->url ?>">
-            <img src="./assets/uploads/<?= $img->url ?>.<?= $img->extension ?>" class="card-img-top" id="img-preview" alt="...">
-            <div class="card-body">
-                <h4 class="card-title">Détails de l'image</h5>
-                    <p class="card-text"><strong>Nom de l'image</strong> : <a href="./assets/uploads/<?= $img->url ?>.<?= $img->extension ?>"><?= $img->name ?></a></p>
-                    <p class="card-text"><strong>Taille de l'image</strong> : <?= $img->size ?> octets</p>
-                    <p class="card-text"><small class="text-muted">Ajoutée le <?= $img->date ?></small></p>
-                    <hr id="analyser" />
+    if (!$img) {
+        header('Location: /index.php');
+        die;
+    }
 
-                    <a id="btn-analyse" href="#analyser" class="btn btn-primary">Analyser</a>
-                    <br/>
-                    <br/>
-                    <div class="alert alert-info invisible" role="alert" id="result-analyse">
-                    </div>
-            </div>
-        </div>
-    </div>
-<?php
-} else {
-?>
+    include('includes/header.php'); ?>
 
     <div class="container mt-4">
-        <div class="alert alert-danger" role="alert">
-            Une erreur est survenue, merci de vérifier si cette image existe toujours.
+        <div class="alert alert-primary" role="alert">
+            La prédiction qui correspond le mieux est "<?= $img->class ?>" à <?= round($img->score * 100) ?>%
         </div>
 
-        <a href="/history.php">Aller à l'historique</a>
     </div>
-
 <?php
-
+    include('includes/footer.php');
 }
-include('includes/footer.php');

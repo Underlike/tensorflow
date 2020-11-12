@@ -9,6 +9,7 @@ include('includes/dbconnect.php');
 include('includes/header.php');
 
 
+$count = $collection->count();
 $uploads = $collection->find();
 
 $i = 0;
@@ -17,18 +18,26 @@ $i = 0;
 <div class="container mt-4">
     <h1 class="mb-4">Historique des images téléversées</h1>
     <div class="row">
-        <?php foreach ($uploads as $upload) { ?>
-            <div class="card mb-3 col-lg-3 mx-2" style="width: 18rem;">
-                <img src="./assets/uploads/<?= $upload->url ?>.<?= $upload->extension ?>" class="card-img-top" style="max-width: 500; max-height: 500px" alt="<?= $upload->name ?>">
-                <div class="card-body">
-                    <a href="/view.php?id=<?= $upload->url ?>" class="btn btn-primary">Détails</a>
-                    <a href="/delete.php?id=<?= $upload->url ?>" class="btn btn-primary">Supprimer</a>
+
+        <?php if ($count > 0) { ?>
+            <?php foreach ($uploads as $upload) { ?>
+                <div class="card mb-3 col-lg-3 mx-2" style="width: 18rem;">
+                    <img src="./assets/uploads/<?= $upload->url ?>.<?= $upload->extension ?>" class="card-img-top" style="max-width: 500; max-height: 500px" alt="<?= $upload->name ?>">
+                    <div class="card-body">
+                        <a href="/view.php?id=<?= $upload->url ?>" class="btn btn-primary">Détails</a>
+                        <a href="/delete.php?id=<?= $upload->url ?>" class="btn btn-primary">Supprimer</a>
+                    </div>
                 </div>
-            </div>
-            <?php if ($i % 4) { ?>
-            </div>
-            <div class="row">
-            <?php } ?>
-        <?php } ?>
+                <?php if ($i % 4) { ?>
+    </div>
+    <div class="row">
+    <?php } ?>
+<?php } ?>
+
+<?php } else { ?>
+    <div class="alert alert-primary" role="alert">
+        Il n'y a rien dans l'historique !
+    </div>
+<?php } ?>
     </div>
 </div>

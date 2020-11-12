@@ -47,7 +47,10 @@ if (!empty($_GET['urlImage'])) {
         </div>
     </div>
 
-    <div class="card mt-4">
+    <br/>
+    <a href="./history.php" class="btn btn-primary">Voir l'historique</a>
+
+    <!-- <div class="card mt-4">
         <div class="card-header"><b>Liste MongoDB des images</b></div>
         <div class="card-body">
             <table class="table m-0">
@@ -81,7 +84,7 @@ if (!empty($_GET['urlImage'])) {
                 </tbody>
             </table>
         </div>
-    </div>
+    </div> -->
 </div>
 
 <script src="./assets/js/tensorflow.js"></script>
