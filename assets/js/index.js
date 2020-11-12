@@ -1,11 +1,10 @@
+
 async function app() {
-  const img = document.getElementById('upload-img');
+  const img = document.getElementById('img');
 
   cocoSsd.load().then(model => {
     model.detect(img).then(predictions => {
-      predictions.forEach(element => 
-        document.getElementById('console').innerHTML += `<li><b>Prédiction</b> : ${element.class} avec une <b>probabilité</b> de : ${element.score}%</li>`
-      );
+        document.getElementById('console').innerHTML = `<div id="class" value="${predictions[0].class}"></div> <div id="score" value="${predictions[0].score}"></div>`
     });
   });
 }
