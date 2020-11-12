@@ -43,6 +43,18 @@ if (isset($_POST) && count($_FILES) > 0) {
     header('Location: index.php?urlImage='. $token . '.' . $extension);
 }
 
+if($_POST['score'] && $_POST['class'] && $_POST['image_url']) {
+
+    $name = explode(".", $_POST['image_url']);
+
+    $collection->updateOne(array("url" => $name[0]), [ '$set' =>
+        ['class' => $_POST['class'],
+        'score' => $_POST['score']]
+    ]);
+
+    header('Location: index.php');
+}
+
 ?>
 
 

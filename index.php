@@ -22,17 +22,32 @@
             <div class="card">
                 <div class="card-header">Analyser une image</div>
                 <div class="card-body">
+                <?php 
+                if(empty($_GET['urlImage'])) { ?>
                     <form action="actions.php" method="POST" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-lg-10">
                                 <input type="file" value="Uploader une image" required id="upload-img" name="uploaded-img" accept="image/x-png,image/jpeg" />
+                                
+                            </div>
+                            <div class="col-lg-2">
+                                <button class="btn btn-primary btn-block" type="submit">Téléverser</button>
+                            </div>
+                        </div>                        
+                    </form>
+                <?php } else { ?>
+                    <form action="actions.php" method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-lg-10">
                                 <div id="console"></div>
+                                <input type="hidden" name="image_url" id="image_url" value="<?php echo $_GET['urlImage'];  ?>">
                             </div>
                             <div class="col-lg-2">
                                 <button class="btn btn-primary btn-block" type="submit">Analyser</button>
                             </div>
                         </div>                        
                     </form>
+                <?php } ?>
                 </div>
             </div>
         </div>
