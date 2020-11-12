@@ -18,7 +18,7 @@ $uploads = $collection->find();
         <div class="card mb-3" style="width: 18rem;">
             <img src="./uploads/<?= $upload->url ?>.<?= $upload->extension ?>" class="card-img-top" alt="<?= $upload->name ?>">
             <div class="card-body">
-                <p class="card-text">Plus d'infos...</p>
+                <a href="/delete.php?id=<?= $upload->url ?>" class="btn btn-primary">Supprimer</a>
             </div>
         </div>
     <?php } ?>
