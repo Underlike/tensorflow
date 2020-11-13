@@ -16,6 +16,11 @@ if (!empty($_GET['urlImage'])) {
 ?>
 
 <div class="container mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active"><a href="#" class="text-success">Accueil</a></li>
+        </ol>
+    </nav>
     <div class="card">
         <div class="card-header"><b>Analyser une image</b></div>
         <div class="card-body">
@@ -27,7 +32,7 @@ if (!empty($_GET['urlImage'])) {
                             <input type="file" value="Uploader une image" required id="upload-img" name="uploaded-img" accept="image/x-png,image/jpeg" />
                         </div>
                         <div class="col-lg-2">
-                            <button class="btn btn-primary btn-block" type="submit">Téléverser</button>
+                            <button class="btn btn-success btn-block" type="submit">Téléverser</button>
                         </div>
                     </div>
                 </form>
@@ -39,52 +44,16 @@ if (!empty($_GET['urlImage'])) {
                             <input type="hidden" name="image_url" id="image_url" value="<?php echo $_GET['urlImage'];  ?>">
                         </div>
                         <div class="col-lg-2">
-                            <button class="btn btn-primary btn-block" type="submit">Analyser</button>
+                            <button class="btn btn-success btn-block" type="submit">Analyser</button>
                         </div>
                     </div>
                 </form>
             <?php } ?>
         </div>
-    </div>
-
-    <br/>
-    <a href="./history.php" class="btn btn-primary">Voir l'historique</a>
-
-    <!-- <div class="card mt-4">
-        <div class="card-header"><b>Liste MongoDB des images</b></div>
-        <div class="card-body">
-            <table class="table m-0">
-                <thead>
-                    <tr>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Taille</th>
-                        <th scope="col">Classe</th>
-                        <th scope="col">Score</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    require('functions.php');
-                    $images = getConnection()->find();
-                    foreach ($images as $image) :
-                        if (!empty($image['class'])) :
-                    ?>
-                            <tr>
-                                <td><?= $image['name']; ?></td>
-                                <td><?= $image['date']; ?></td>
-                                <td><?= $image['size']; ?></td>
-                                <td><?= $image['class']; ?></td>
-                                <td><?= number_format($image['score'], 2, ',', ' '); ?>%</td>
-                            </tr>
-                    <?php
-                        endif;
-                    endforeach;
-                    ?>
-                </tbody>
-            </table>
+        <div class="card-footer">
+            <a href="/tensorflow-q/history.php" class="btn btn-dark btn-block">Voir l'historique</a>
         </div>
-    </div> -->
+    </div>   
 </div>
 
 <script src="./assets/js/tensorflow.js"></script>

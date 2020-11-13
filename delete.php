@@ -26,7 +26,14 @@ if ($img) { ?>
             L'image portant le nom <strong><?= $img->name ?></strong> a bien été supprimée !
         </div>
 
-        <a href="/history.php">Aller à l'historique</a>
+        <div class="row">
+            <div class="col-lg-6">
+                <a href="/tensorflow-q/index.php" class="btn btn-block btn-success">Accueil</a>
+            </div>
+            <div class="col-lg-6">
+                <a href="/tensorflow-q/history.php" class="btn btn-block btn-dark">Historique</a>
+            </div>
+        </div>
     </div>
 
 <?php
